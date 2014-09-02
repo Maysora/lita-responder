@@ -39,7 +39,7 @@ module Lita
       end
 
       def list_responder(response)
-        if questions.present?
+        if !questions.empty?
           response.reply_with_mention '- ' + questions.map{|q| q.sub('lita-responder:', '') }.join("\n- ")
         else
           response.reply_with_mention 'I don\'t have any question-answers stored'

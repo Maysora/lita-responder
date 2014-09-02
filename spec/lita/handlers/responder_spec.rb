@@ -41,6 +41,12 @@ describe Lita::Handlers::Responder, lita_handler: true do
       expect(replies.last).to match(/^I have removed/)
     end
 
+    it 'allow responder list' do
+      send_command('responder add aya hirano -> cute')
+      send_command('responder list')
+      expect(replies.last).to match(/aya hirano/)
+    end
+
     it 'disallow responder reset' do
       send_command('responder reset')
       expect(replies.last).to be_nil
