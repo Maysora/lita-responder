@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-responder"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Roy Hadrianoro"]
   spec.email         = ["dev@maysora.com"]
   spec.description   = %q{A Lita handler for responding using saved key-value or optionally using cleverbot}
