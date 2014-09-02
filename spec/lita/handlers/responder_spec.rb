@@ -68,6 +68,9 @@ describe Lita::Handlers::Responder, lita_handler: true do
     it 'allow responder reset' do
       send_command('responder reset')
       expect(replies.last).to match(/removed$/)
+
+      send_command('responder list')
+      expect(replies.last).to match(/I don't have any/)
     end
   end
 end

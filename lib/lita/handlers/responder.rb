@@ -26,7 +26,7 @@ module Lita
 
         update_answer question, answer
 
-        response.reply_with_mention "I have added '#{answer}' to '#{question}' question"
+        response.reply_with_mention "I have added '#{answer}' to '#{question}'"
       end
 
       def remove_responder(response)
@@ -35,20 +35,20 @@ module Lita
         if redis.exists("lita-responder:#{question.downcase}")
           redis.del("lita-responder:#{question.downcase}")
         end
-        response.reply_with_mention "I have removed '#{question}' question"
+        response.reply_with_mention "I have removed '#{question}'"
       end
 
       def list_responder(response)
         if !questions.empty?
           response.reply_with_mention '- ' + questions.map{|q| q.sub('lita-responder:', '') }.join("\n- ")
         else
-          response.reply_with_mention 'I don\'t have any question-answers stored'
+          response.reply_with_mention 'I don\'t have any key-value stored'
         end
       end
 
       def reset_responder(response)
         count = questions.empty? ? 0 : redis.del(questions)
-        response.reply_with_mention "#{count} question(s) removed"
+        response.reply_with_mention "#{count} key(s) removed"
       end
 
       def ask_responder(response)
